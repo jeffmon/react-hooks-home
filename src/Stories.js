@@ -22,7 +22,7 @@ const Stories = () => {
               rel="noopener noreferrer"
             >{`${title} (${score})`}</a>
             <div>
-              {by} - {new Date(time).toLocaleString()}
+              {by} - {new Date(time * 1000).toLocaleString()}
             </div>
           </div>
         );
