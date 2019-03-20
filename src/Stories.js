@@ -9,21 +9,24 @@ const Stories = () => {
       .then(json => setStories(json));
   }, []);
 
-  const openLink = link => {
-    window.open(link, '_blank');
-  };
-
   return (
-    <div>
+    <div className="Stories">
       <h3>Stories</h3>
-      {stories.map(story => (
-        <div key={story.id}>
-          <h4 onClick={() => openLink(story.url)}>{`${story.title} (${
-            story.score
-          })`}</h4>
-          <h5>{`By: ${story.by}`}</h5>
-        </div>
-      ))}
+      {stories.map(story => {
+        const { id, by, time, title, url, score } = story;
+        return (
+          <div key={id}>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >{`${title} (${score})`}</a>
+            <div>
+              {by} - {new Date(time).toLocaleString()}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
