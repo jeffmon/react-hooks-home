@@ -5,9 +5,7 @@ const Joke = () => {
   useEffect(() => {
     fetch('https://official-joke-api.appspot.com/random_joke')
       .then(response => response.json())
-      .then(json => {
-        setJoke(json);
-      });
+      .then(json => setJoke(json));
   }, []);
 
   const { setup, punchline } = joke;

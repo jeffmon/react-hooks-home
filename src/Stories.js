@@ -6,9 +6,7 @@ const Stories = () => {
   useEffect(() => {
     fetch('https://news-proxy-server.appspot.com/topstories')
       .then(response => response.json())
-      .then(json => {
-        setStories(json);
-      });
+      .then(json => setStories(json));
   }, []);
 
   const openLink = link => {
@@ -23,6 +21,7 @@ const Stories = () => {
           <h4 onClick={() => openLink(story.url)}>{`${story.title} (${
             story.score
           })`}</h4>
+          <h5>{`By: ${story.by}`}</h5>
         </div>
       ))}
     </div>
